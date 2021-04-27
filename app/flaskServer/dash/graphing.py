@@ -369,7 +369,7 @@ def init_graphing(server):
                   State('click-data', 'children'))
     def oneDownload(n_clicks, children):
         if (n_clicks is not None) and (n_clicks > 0) and (children is not None):
-            searchDate = children.strip('Sun_')
+            searchDate = str(children).strip('Sun_')
             searchDate = searchDate.strip('.fits')
             try:
                 specData = read_csv(one.find_one({'filename': {'$regex': '.*' + searchDate + '.*'}}))
@@ -384,7 +384,7 @@ def init_graphing(server):
                   State('click-data', 'children'))
     def twoDownload(n_clicks, children):
         if (n_clicks is not None) and (n_clicks > 0) and (children is not None):
-            searchDate = children.strip('Sun_')
+            searchDate = str(children).strip('Sun_')
             searchDate = searchDate.strip('.fits')
             try:
                 specData = read_csv(two.find_one({'filename': {'$regex': '.*' + searchDate + '.*'}}))
