@@ -1,9 +1,9 @@
 
 csv_label = {
     'accept': 'ACCEPT',
-    'filename': 'FILENAME',
+    'filename': 'OBNM',
     'datetime': 'MJD',
-    'velocity': 'V',
+    'velocity': 'MNVEL',
     'flux': 'FLUX',
     'wavelength': '# WAVE',
     'order': 'ORDER'
