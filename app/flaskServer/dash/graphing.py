@@ -20,6 +20,8 @@ from datetime import date
 import dash_daq as daq
 from json import dumps
 import plotly
+import os
+assets_path = os.getcwd() +'/static/'
 
 url_base = '/data/'
 
@@ -103,7 +105,7 @@ def init_graphing(server):
         '__main__',
         server=server,
         url_base_pathname=url_base,
-        assets_folder='static',
+        assets_folder=asset_path,
     )
 
     @server.before_request
@@ -369,7 +371,7 @@ def init_graphing(server):
                   State('click-data', 'children'))
     def oneDownload(n_clicks, children):
         if (n_clicks is not None) and (n_clicks > 0) and (children is not None):
-            searchDate = str(children).strip('Sun_')
+            searchDate = children.strip('Sun_')
             searchDate = searchDate.strip('.fits')
             try:
                 specData = read_csv(one.find_one({'filename': {'$regex': '.*' + searchDate + '.*'}}))
@@ -384,7 +386,7 @@ def init_graphing(server):
                   State('click-data', 'children'))
     def twoDownload(n_clicks, children):
         if (n_clicks is not None) and (n_clicks > 0) and (children is not None):
-            searchDate = str(children).strip('Sun_')
+            searchDate = children.strip('Sun_')
             searchDate = searchDate.strip('.fits')
             try:
                 specData = read_csv(two.find_one({'filename': {'$regex': '.*' + searchDate + '.*'}}))
