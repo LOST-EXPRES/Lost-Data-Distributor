@@ -20,8 +20,6 @@ from datetime import date
 import dash_daq as daq
 from json import dumps
 import plotly
-import os
-assets_path = os.getcwd() +'/static/'
 
 url_base = '/data/'
 
@@ -105,7 +103,6 @@ def init_graphing(server):
         '__main__',
         server=server,
         url_base_pathname=url_base,
-        assets_folder=asset_path,
     )
 
     @server.before_request
